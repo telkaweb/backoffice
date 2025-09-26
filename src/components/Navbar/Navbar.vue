@@ -81,6 +81,54 @@
             </v-list-item>
           </v-list-group>
 
+          <!-- Charity -->
+          <v-list-group no-action color="white">
+            <template v-slot:activator>
+              <v-list-item-icon>
+                <v-icon color="white" large class="mt-2">mdi-account-cog</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title class="item-navbar-text pr-0">سرویس اپراتور</v-list-item-title>
+              </v-list-item-content>
+            </template>
+            <v-list-item to="/operator/order/list">
+              <v-list-item-title class="item-navbar-sub-text">لیست سفارش ها</v-list-item-title>
+              <v-list-item-icon>
+                <v-icon color="#fdf4d5">mdi-clipboard-list-outline</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+            <v-list-item to="/operator/services">
+              <v-list-item-title class="item-navbar-sub-text">لیست محصولات</v-list-item-title>
+              <v-list-item-icon>
+                <v-icon color="#fdf4d5">mdi-access-point-network</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+          </v-list-group>
+
+          <!-- Inquiries -->
+          <v-list-group no-action color="white">
+            <template v-slot:activator>
+              <v-list-item-icon>
+                <v-icon color="white" large class="mt-2">mdi-file-search-outline</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title class="item-navbar-text pr-0">سرویس استعلام</v-list-item-title>
+              </v-list-item-content>
+            </template>
+            <v-list-item to="/inquiries/requests">
+              <v-list-item-title class="item-navbar-sub-text">لیست استعلام ها</v-list-item-title>
+              <v-list-item-icon>
+                <v-icon color="#fdf4d5">mdi-clipboard-list-outline</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+            <v-list-item to="/inquiries/services">
+              <v-list-item-title class="item-navbar-sub-text">لیست سرویس ها</v-list-item-title>
+              <v-list-item-icon>
+                <v-icon color="#fdf4d5">mdi-format-list-checkbox</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+          </v-list-group>
+
           <!-- Services -->
           <v-list-group no-action color="white">
             <template v-slot:activator>

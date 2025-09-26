@@ -60,7 +60,7 @@
         </v-col>
       </v-row>
 
-      <v-divider class="my-4"></v-divider>
+      <v-divider v-if="donation.parent_transaction" class="my-4"></v-divider>
 
       <v-row v-if="donation.parent_transaction">
         <v-col cols="12">
@@ -76,7 +76,7 @@
         </v-col>
       </v-row>
 
-      <v-divider class="my-4"></v-divider>
+      <v-divider v-if="donation.service_requests && donation.service_requests.length" class="my-4"></v-divider>
 
       <v-row v-if="donation.service_requests && donation.service_requests.length">
         <v-col cols="12">
@@ -116,14 +116,14 @@
         </v-col>
       </v-row>
 
-      <v-divider class="my-4"></v-divider>
+      <v-divider v-if="donation.gateway" class="my-4"></v-divider>
 
       <v-row v-if="donation.gateway">
         <v-col cols="12">
           <h3>اطلاعات درگاه</h3>
         </v-col>
-        <v-col cols="12" md="6"><strong>بانک:</strong> {{ donation.gateway.bank || '-' }}</v-col>
-        <v-col cols="12" md="6"><strong>کد رهگیری:</strong> {{ donation.gateway.tracking_code || '-' }}</v-col>
+        <v-col cols="12" md="6"><strong>نام درگاه:</strong> {{ donation.gateway.name || '-' }}</v-col>
+        <v-col cols="12" md="6"><strong>مرچنت:</strong> {{ donation.gateway.merchant || '-' }}</v-col>
       </v-row>
     </v-card>
   </div>

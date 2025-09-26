@@ -51,9 +51,7 @@
             :loading="loading"
           >
             <template v-slot:[`item.description`]="{ item }">
-              <span>
-                {{ truncate(item.description, 100) }}
-              </span>
+              <span>{{ truncate(item.description, 100) }}</span>
             </template>
 
             <template v-slot:[`item.balance`]="{ item }">
@@ -61,7 +59,7 @@
             </template>
 
             <template v-slot:[`item.icon`]="{ item }"> 
-              <img :src="item.icon_file && item.icon_file.url" width="64" height="64" alt="icon" class="border-img">
+              <img :src="item.icon_file && item.icon_file.url ? item.icon_file.url : '/images/no-image.png'" width="64" height="64" alt="icon" class="border-img">
             </template>
 
             <template v-slot:[`item.cover`]="{ item }">
@@ -69,8 +67,19 @@
             </template>
 
             <template v-slot:[`item.is_active`]="{ item }">
-              <v-chip :color="item.is_active ? 'success' : 'grey' " dark small>
+              <v-chip :color="item.is_active ? 'success' : 'grey'" dark small @click="toggleStatus(item.unique_key)">
                 {{ item.is_active ? 'فعال' : 'غیرفعال' }}
+              </v-chip>
+            </template>
+
+            <template v-slot:[`item.is_selected_for_profit`]="{ item }">
+              <v-chip
+                :color="item.is_selected_for_profit === 1 ? 'green' : 'grey'"
+                dark
+                small
+                @click="toggleDefault(item.unique_key)"
+              >
+                {{ item.is_selected_for_profit === 1 ? 'صندوق پیش‌فرض' : 'تعیین پیش‌فرض' }}
               </v-chip>
             </template>
 
@@ -82,8 +91,8 @@
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn type="button" fab x-small color="info"
-                        v-bind="attrs" v-on="on" class="white--text mx-1"
-                        @click="donations(item.unique_key)" elevation="0">
+                         v-bind="attrs" v-on="on" class="white--text mx-1"
+                         @click="donations(item.unique_key)" elevation="0">
                     <v-icon>mdi-cash-multiple</v-icon>
                   </v-btn>
                 </template>
@@ -109,7 +118,6 @@
                 </template>
                 <span>حذف</span>
               </v-tooltip>
-            
             </template>
 
             <template v-slot:[`item.multi-operation`]="{ item }">
@@ -197,26 +205,18 @@ export default {
       deleteAllDialog: false,
       loading: true,
       deleteEntityDialog: false,
-      categories: { 
-        current_page: 1
-      },
+      categories: { current_page: 1 },
       headers: [
-        { text: 'ردیف', value: 'row_number', align: 'center', width: '5%', show: true, sortable: false },        { text: 'عنوان صندوق', value: 'name', align: 'center', width: '18%', show: true, sortable: true },
-        { text: 'توضیحات', value: 'description', align: 'center', width: '28%', show: true, sortable: false },
-        { text: 'موجودی صندوق (تومان)', value: 'balance', align: 'center', width: '10%', show: true, sortable: true },
+        { text: 'ردیف', value: 'row_number', align: 'center', width: '5%', show: true, sortable: false },
+        { text: 'عنوان صندوق', value: 'name', align: 'center', width: '15%', show: true, sortable: true },
+        { text: 'توضیحات', value: 'description', align: 'center', width: '20%', show: true, sortable: false },
+        { text: 'موجودی صندوق (تومان)', value: 'balance', align: 'center', width: '12%', show: true, sortable: true },
         { text: 'وضعیت', value: 'is_active', align: 'center', width: '8%', show: true, sortable: true },
-        { text: 'آیکون', value: 'icon', align: 'center', width: '10%', show: true, sortable: false },
-        { text: 'کاور', value: 'cover', align: 'center', width: '10%', show: true, sortable: false },
-        {
-          text: 'زمان ثبت',
-          value: 'created_at_fa',
-          original_value: 'created_at',
-          align: 'center',
-          width: '10%',
-          show: true,
-          sortable: true
-        },
-        { text: 'عملیات', value: 'operation', align: 'center', width: '10%', show: true, sortable: false },
+        { text: 'پیش‌فرض(تخصیص سود)', value: 'is_selected_for_profit', align: 'center', width: '10%', show: true, sortable: false },
+        { text: 'آیکون', value: 'icon', align: 'center', width: '8%', show: true, sortable: false },
+        { text: 'کاور', value: 'cover', align: 'center', width: '8%', show: true, sortable: false },
+        { text: 'زمان ثبت', value: 'created_at_fa', original_value: 'created_at', align: 'center', width: '10%', show: true, sortable: true },
+        { text: 'عملیات', value: 'operation', align: 'center', width: '13%', show: true, sortable: false },
         { text: 'عملیات گروهی', value: 'multi-operation', align: 'right', width: '8%', show: true, sortable: false },
       ],
       selectedEntityID: null,
@@ -225,9 +225,7 @@ export default {
   },
   watch: {
     options: {
-      handler() {
-        this.getEntities()
-      },
+      handler() { this.getEntities() },
       deep: true,
     },
   },
@@ -262,7 +260,7 @@ export default {
           ...it,
           row_number: (this.categories.from || 1) + idx,
           created_at_fa: it.created_at ? new Date(it.created_at).toLocaleString('fa-IR') : '-',
-          icon: it.icon_file && it.icon_file.url ? it.icon_file.url : null,
+          icon: it.icon_file?.url || null,
           cover: it.cover_file?.url || null
         }))
         this.loading = false
@@ -283,6 +281,16 @@ export default {
     initialRemove(entityKey) {
       this.selectedEntityID = entityKey
       this.deleteEntityDialog = true
+    },
+    toggleStatus(entityKey) {
+      window.axios.post(`v3/admin/charity/${entityKey}/status`).then(() => {
+        this.getEntities()
+      })
+    },
+    toggleDefault(entityKey) {
+      window.axios.post(`v3/admin/charity/${entityKey}/default`).then(() => {
+        this.getEntities()
+      })
     }
   },
   mounted() {
@@ -300,8 +308,5 @@ export default {
 .text-green { color: darkgreen; }
 .text-grey { color: grey; }
 .border-img {border-radius: 8px;margin-top: 10px;}
-.ltr-cell {
-  direction: ltr;
-  display: inline-block;
-}
+.ltr-cell { direction: ltr; display: inline-block; }
 </style>

@@ -11,7 +11,7 @@
           <v-card-title>
             <v-row>
               <v-col>
-                مدیریت وی لاین
+                پیشخوان مدیریت خیریه
               </v-col>
             </v-row>
           </v-card-title>

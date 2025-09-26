@@ -13,6 +13,15 @@ import CharityEditView from "@/views/Charity/CharityEditView";
 import CharityDonationListView from "@/views/Charity/CharityDonationListView";
 import CharityDonationDetailsView from "@/views/Charity/CharityDonationDetailsView";
 
+import OperatorOrderListLiew from "@/views/Operator/OperatorOrderListLiew";
+import OperatorOrderDetailsView from "@/views/Operator/OperatorOrderDetailsView";
+import OperatorServiceListLiew from "@/views/Operator/OperatorServiceListLiew";
+
+import InquiryRequestListLiew from "@/views/Inquiries/InquiryRequestListLiew";
+import InquiryRequestDetailsView from "@/views/Inquiries/InquiryRequestDetailsView";
+import InquiryServicesListLiew from "@/views/Inquiries/InquiryServicesListLiew";
+import InquiryUpdateServiceView from "@/views/Inquiries/InquiryUpdateServiceView";
+
 import TagIndexView from "@/views/Tag/TagIndexView";
 import TagCreateView from "@/views/Tag/TagCreateView";
 import TagEditView from "@/views/Tag/TagEditView";
@@ -431,6 +440,46 @@ const routes = [
         name: 'CharityDonationDetailsView',
         component: CharityDonationDetailsView
     },
+
+    /*operator*/
+    {
+        path: '/operator/order/list',
+        name: 'OperatorOrderListLiew',
+        component: OperatorOrderListLiew
+    },
+    {
+        path: '/operator/order/:id/details',
+        name: 'OperatorOrderDetailsView',
+        component: OperatorOrderDetailsView
+    },
+    {
+        path: '/operator/services',
+        name: 'OperatorServiceListLiew',
+        component: OperatorServiceListLiew
+    },
+
+    /*inquiry*/
+    {
+        path: '/inquiries/requests',
+        name: 'InquiryRequestListLiew',
+        component: InquiryRequestListLiew
+    },
+    {
+        path: '/inquiries/request/:id/details',
+        name: 'InquiryRequestDetailsView',
+        component: InquiryRequestDetailsView
+    },
+    {
+        path: '/inquiries/services',
+        name: 'InquiryServicesListLiew',
+        component: InquiryServicesListLiew
+    },
+    {
+        path: '/inquiries/service/:id/edit',
+        name: 'InquiryUpdateServiceView',
+        component: InquiryUpdateServiceView
+    },
+    
     /*order*/
     {
         path: '/order/index',

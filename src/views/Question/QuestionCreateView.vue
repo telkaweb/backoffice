@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     create() {
-      window.axios.post('admin/question/create/', {
+      window.axios.post('v1/admin/question/create/', {
         answer: this.question.answer,
         question: this.question.question,
         priority: this.question.priority,

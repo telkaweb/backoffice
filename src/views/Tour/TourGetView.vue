@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     getEntities() {
-      let url = window.urlBuilder(this.buyers, 'admin/tour/index-buyers/'+this.$route.params.id, this.options, this.headers)
+      let url = window.urlBuilder(this.buyers, 'v1/admin/tour/index-buyers/'+this.$route.params.id, this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.buyers = res.data.data
         this.loading = false

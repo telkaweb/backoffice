@@ -36,16 +36,18 @@ const _axios = axios.create(config);
 const _axiosMain = axios.create(configMain);
 
 _axios.interceptors.request.use(
-    function (config) {
-      store.commit("setLoading", true)
-      // Do something before request is sent
-      return config;
-    },
-    function (error) {
-      // Do something with request error
-      return Promise.reject(error);
+  function (config) {
+    const token = Vue.$cookies.get('token')
+    if (token) {
+      config.headers['Authorization'] = token
     }
-);
+    store.commit("setLoading", true)
+    return config
+  },
+  function (error) {
+    return Promise.reject(error)
+  }
+)
 
 // Add a response interceptor
 _axios.interceptors.response.use(

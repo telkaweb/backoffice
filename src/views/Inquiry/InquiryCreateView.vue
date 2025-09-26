@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     create() {
-      window.axios.post('admin/inquiry/create/', {
+      window.axios.post('v1/admin/inquiry/create/', {
         mobile: this.inquiry.mobile,
         national_code: this.inquiry.national_code,
         description: this.inquiry.description,

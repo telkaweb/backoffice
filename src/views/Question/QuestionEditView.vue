@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/question/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/question/get/' + this.$route.params.id).then((res) => {
         this.question = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -69,7 +69,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/question/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/question/update/' + this.$route.params.id, {
         answer: this.question.answer,
         question: this.question.question,
         priority: this.question.priority,

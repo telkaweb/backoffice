@@ -109,7 +109,7 @@ export default {
       formData.append('file', this.file)
       formData.append('module', this.module)
       formData.append('type', this.type)
-      window.axios.post('admin/file-manager/store', formData).then((res) => {
+      window.axios.post('v1/admin/file-manager/store', formData).then((res) => {
         this.fileUrl = res.data.data.data
         this.emitBackToParent( res.data.data.data)
         this.copyToClipboard()

@@ -271,7 +271,7 @@ export default {
     },
     enterOtp() {
       this.loading = true
-      window.axios.post('/admin/inquiry/enter-otp/' + this.selectedInquiryId, {
+      window.axios.post('v1/admin/inquiry/enter-otp/' + this.selectedInquiryId, {
         otp: this.otp
       }).then(() => {
         this.enterOtpDialog = false
@@ -289,7 +289,7 @@ export default {
       })
     },
     async removeAllFinally() {
-      window.axios.post('/admin/inquiry/delete-multi', {
+      window.axios.post('v1/admin/inquiry/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -303,7 +303,7 @@ export default {
       })
     },
     getEntities() {
-      let url = window.urlBuilder(this.inquiries, 'admin/inquiry/index', this.options, this.headers)
+      let url = window.urlBuilder(this.inquiries, 'v1/admin/inquiry/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.inquiries = res.data.data
         this.loading = false
@@ -313,7 +313,7 @@ export default {
       this.$router.push('/inquiry/create')
     },
     remove() {
-      window.axios.delete('admin/inquiry/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/inquiry/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

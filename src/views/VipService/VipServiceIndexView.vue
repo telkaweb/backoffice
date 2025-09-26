@@ -332,13 +332,13 @@ export default {
   },
   methods: {
     getCodes(itemId) {
-      window.axios.get('admin/vip-service/get-code/' + itemId).then((res) => {
+      window.axios.get('v1/admin/vip-service/get-code/' + itemId).then((res) => {
         this.showCodesDialog = true
         this.codes = res.data.data
       });
     },
     deleteCode(code) {
-      window.axios.delete('admin/vip-service/delete-code/' + code.id).then(() => {
+      window.axios.delete('v1/admin/vip-service/delete-code/' + code.id).then(() => {
         this.getCodes(code.vip_service_id)
       });
     },
@@ -350,7 +350,7 @@ export default {
       this.showAttachCodesDialog = true
     },
     attachCodesFinally() {
-      window.axios.post('admin/vip-service/attach-code', {
+      window.axios.post('v1/admin/vip-service/attach-code', {
         vip_service_id: this.selectedItem,
         codes: this.codes
       }).then((res) => {
@@ -359,7 +359,7 @@ export default {
       });
     },
     async removeAllFinally() {
-      window.axios.post('/admin/vip-service/delete-multi', {
+      window.axios.post('v1/admin/vip-service/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -367,7 +367,7 @@ export default {
       })
     },
     getEntities() {
-      let url = window.urlBuilder(this.vipServices, 'admin/vip-service/index', this.options, this.headers)
+      let url = window.urlBuilder(this.vipServices, 'v1/admin/vip-service/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.vipServices = res.data.data
         this.loading = false
@@ -380,7 +380,7 @@ export default {
       this.$router.push('/vip-service/edit/' + entityID)
     },
     remove() {
-      window.axios.delete('admin/vip-service/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/vip-service/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/material/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/material/get/' + this.$route.params.id).then((res) => {
         this.material = res.data.data
         this.loading = false
       }).catch((err) => {

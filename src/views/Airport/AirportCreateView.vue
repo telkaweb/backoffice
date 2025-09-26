@@ -179,7 +179,7 @@ export default {
   },
   methods: {
     searchAirPort() {
-      window.axios.get('admin/airport/search?needle=' + this.needle).then((res) => {
+      window.axios.get('v1/admin/airport/search?needle=' + this.needle).then((res) => {
         this.searchedAirports = res.data.data
         this.openSnackbar(res.data.message, '#413b3b')
       }).catch((err) => {
@@ -191,7 +191,7 @@ export default {
       })
     },
     create() {
-      window.axios.post('admin/airport/create/', {
+      window.axios.post('v1/admin/airport/create/', {
         en_name: this.airport.en_name,
         fa_name: this.airport.fa_name,
         city: this.airport.city,

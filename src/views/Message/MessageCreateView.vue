@@ -62,21 +62,21 @@ export default {
   },
   methods: {
     getTags() {
-      window.axios.get('admin/tag/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/tag/index?per_page=1000').then((res) => {
         this.tags = res.data.data.data
       }).catch((err) => {
         console.log(err)
       })
     },
     getUsers() {
-      window.axios.get('admin/user/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/user/index?per_page=1000').then((res) => {
         this.users = res.data.data.data
       }).catch((err) => {
         console.log(err)
       })
     },
     create() {
-      window.axios.post('admin/message/create/', {
+      window.axios.post('v1/admin/message/create/', {
         text: this.message.text,
         receiver_id: this.message.receiver_id,
         tag_id: this.message.tag_id,

@@ -128,22 +128,22 @@ export default {
   },
   methods: {
     getBanks() {
-      window.axios.get('admin/bank/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/bank/index?per_page=1000').then((res) => {
         this.banks = res.data.data.data
       })
     },
     getCities() {
-      window.axios.get('admin/city/state/index/' + this.user.state_id).then((res) => {
+      window.axios.get('v1/admin/city/state/index/' + this.user.state_id).then((res) => {
         this.cities = res.data.data
       })
     },
     getStates() {
-      window.axios.get('admin/state/index?per_page=100').then((res) => {
+      window.axios.get('v1/admin/state/index?per_page=100').then((res) => {
         this.states = res.data.data.data
       })
     },
     create() {
-      window.axios.post('admin/user/create/', {
+      window.axios.post('v1/admin/user/create/', {
         first_name: this.user.first_name,
         last_name: this.user.last_name,
         national_code: this.user.national_code,

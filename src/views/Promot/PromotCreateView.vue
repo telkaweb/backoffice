@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     create() {
-      window.axios.post('admin/promot/create/', {
+      window.axios.post('v1/admin/promot/create/', {
         title: this.promot.title,
         description: this.promot.description,
         cover: this.promot.cover,

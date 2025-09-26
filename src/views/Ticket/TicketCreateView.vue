@@ -82,17 +82,17 @@ export default {
   },
   methods: {
     getMyTickets() {
-      window.axios.get('admin/ticket/my?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/ticket/my?per_page=1000').then((res) => {
         this.tickets = res.data.data.data
       })
     },
     getMyTransactions() {
-      window.axios.get('admin/transaction/my?per_page=10000').then((res) => {
+      window.axios.get('v1/admin/transaction/my?per_page=10000').then((res) => {
         this.transactions = res.data.data.data
       })
     },
     create() {
-      window.axios.post('admin/ticket/create/', {
+      window.axios.post('v1/admin/ticket/create/', {
         ticket_id: this.ticket.ticket_id,
         product_id: this.ticket.product_id,
         transaction_id: this.ticket.transaction_id,

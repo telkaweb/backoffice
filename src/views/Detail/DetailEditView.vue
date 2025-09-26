@@ -103,7 +103,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/detail/update/' + this.$route.params.id, this.detail).then((res) => {
+      window.axios.post('v1/admin/detail/update/' + this.$route.params.id, this.detail).then((res) => {
         this.openSnackbar(res.data.message, '#413b3b')
       }).catch((err) => {
         if (err.response.status === 422) {

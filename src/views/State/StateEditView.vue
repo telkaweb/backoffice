@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/state/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/state/get/' + this.$route.params.id).then((res) => {
         this.state = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -61,7 +61,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/state/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/state/update/' + this.$route.params.id, {
         name: this.state.name,
         label: this.state.label,
         is_active: this.state.is_active,

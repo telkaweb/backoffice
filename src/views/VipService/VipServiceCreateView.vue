@@ -216,7 +216,7 @@ export default {
       this.vipService.fields.splice(index, 1);
     },
     getCategories() {
-      window.axios.get('admin/category/index?per_page=1000&type=vip_service').then((res) => {
+      window.axios.get('v1/admin/category/index?per_page=1000&type=vip_service').then((res) => {
         this.categories = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -229,7 +229,7 @@ export default {
       })
     },
     create() {
-      window.axios.post('admin/vip-service/create/', this.vipService).then((res) => {
+      window.axios.post('v1/admin/vip-service/create/', this.vipService).then((res) => {
         this.openSnackbar(res.data.message, '#413b3b')
       }).catch((err) => {
         if (err.response.status === 422) {

@@ -206,7 +206,7 @@ export default {
   },
   methods: {
     async removeAllFinally() {
-      window.axios.post('/admin/role/delete-multi', {
+      window.axios.post('v1/admin/role/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -217,7 +217,7 @@ export default {
       })
     },
     getEntities() {
-      let url = window.urlBuilder(this.materials, 'admin/role/index', this.options, this.headers)
+      let url = window.urlBuilder(this.materials, 'v1/admin/role/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.roles = res.data.data
         this.loading = false
@@ -230,7 +230,7 @@ export default {
       this.$router.push('/role/edit/' + entityID)
     },
     remove() {
-      window.axios.delete('admin/role/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/role/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       }).catch((err) => {
         this.openSnackbar(err.response.data.message, '#F1416C')

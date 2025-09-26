@@ -126,7 +126,7 @@ export default {
       return numericValue.toLocaleString();
     },
     getEntity() {
-      window.axios.get('admin/order/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/order/get/' + this.$route.params.id).then((res) => {
         this.order = res.data.data
         this.loading = false
       }).catch((err) => {

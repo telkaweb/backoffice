@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     getEntities() {
-      window.axios.get('admin/category/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/category/index?per_page=1000').then((res) => {
         this.categories = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -108,7 +108,7 @@ export default {
       })
     },
     getEntity() {
-      window.axios.get('admin/material/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/material/get/' + this.$route.params.id).then((res) => {
         this.material = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -116,7 +116,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/material/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/material/update/' + this.$route.params.id, {
         name: this.material.name,
         label: this.material.label,
         unit: this.material.unit,

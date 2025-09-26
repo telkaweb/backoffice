@@ -277,7 +277,7 @@ export default {
   },
   methods: {
     async removeAllFinally() {
-      window.axios.post('admin/user/delete-multi', {
+      window.axios.post('v1/admin/user/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -285,7 +285,7 @@ export default {
       })
     },
     getEntities() {
-      let url = window.urlBuilder(this.users, 'admin/user/index', this.options, this.headers)
+      let url = window.urlBuilder(this.users, 'v1/admin/user/index', this.options, this.headers)
       if (this.needle && this.needle !== '') {
         url = url + '&needle=' + this.needle
       }
@@ -307,7 +307,7 @@ export default {
       this.$router.push('/user/get/' + entityID)
     },
     remove() {
-      window.axios.delete('admin/user/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/user/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

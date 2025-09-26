@@ -120,7 +120,7 @@ export default {
   },
   methods: {
     create() {
-      window.axios.post('admin/tour/create/', this.tour).then((res) => {
+      window.axios.post('v1/admin/tour/create/', this.tour).then((res) => {
         this.openSnackbar(res.data.message, '#413b3b')
       }).catch((err) => {
         if (err.response.status === 422) {

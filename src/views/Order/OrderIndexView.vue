@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     getEntities() {
-      let url = window.urlBuilder(this.orders, 'admin/order/index', this.options, this.headers)
+      let url = window.urlBuilder(this.orders, 'v1/admin/order/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.orders = res.data.data
         this.loading = false
@@ -142,7 +142,7 @@ export default {
       if (item.receive_code) {
         return this.openSnackbar('این کالا از قبل ارسال شده است.', '#413b3b')
       }
-      window.axios.get('admin/order/send/' + item.id).then((res) => {
+      window.axios.get('v1/admin/order/send/' + item.id).then((res) => {
         this.openSnackbar(res.data.message, '#413b3b')
         this.getEntities()
       })

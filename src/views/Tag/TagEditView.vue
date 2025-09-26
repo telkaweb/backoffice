@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/tag/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/tag/get/' + this.$route.params.id).then((res) => {
         this.tag = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -70,7 +70,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/tag/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/tag/update/' + this.$route.params.id, {
         name: this.tag.name,
         label: this.tag.label,
         cover: this.tag.cover,

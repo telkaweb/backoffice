@@ -44,12 +44,12 @@ export default {
   },
   methods: {
     getEntities() {
-      window.axios.get('admin/product/index?per_page=10000').then((res) => {
+      window.axios.get('v1/admin/product/index?per_page=10000').then((res) => {
         this.products = res.data.data.data
       })
     },
     create() {
-      window.axios.get('admin/like/create/' + this.like.product_id).then((res) => {
+      window.axios.get('v1/admin/like/create/' + this.like.product_id).then((res) => {
         this.openSnackbar(res.data.message, '#413b3b')
       }).catch((err) => {
         if (err.response.status === 422) {

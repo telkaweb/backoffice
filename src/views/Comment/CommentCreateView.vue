@@ -49,12 +49,12 @@ export default {
   },
   methods: {
     getEntities() {
-      window.axios.get('admin/product/index?per_page=10000').then((res) => {
+      window.axios.get('v1/admin/product/index?per_page=10000').then((res) => {
         this.products = res.data.data.data
       })
     },
     create() {
-      window.axios.post('admin/comment/create/', {
+      window.axios.post('v1/admin/comment/create/', {
         product_id: this.comment.product_id,
         content: this.comment.content,
       }).then((res) => {

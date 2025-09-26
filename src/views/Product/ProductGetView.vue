@@ -157,7 +157,7 @@ export default {
       this.videoOptions.sources[0].src = file.url
     },
     getEntity() {
-      window.axios.get('admin/product/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/product/get/' + this.$route.params.id).then((res) => {
         this.product = res.data.data
         this.loading = false
       }).catch((err) => {

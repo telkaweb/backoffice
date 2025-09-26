@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     create() {
-      window.axios.post('admin/state/create/', {
+      window.axios.post('v1/admin/state/create/', {
         name: this.state.name,
         label: this.state.label,
         is_active: this.state.is_active,

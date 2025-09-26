@@ -222,7 +222,7 @@ export default {
       return numericValue.toLocaleString();
     },
     async removeAllFinally() {
-      window.axios.post('admin/material/delete-multi', {
+      window.axios.post('v1/admin/material/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -230,7 +230,7 @@ export default {
       })
     },
     getEntities() {
-      let url = window.urlBuilder(this.materials, 'admin/material/index', this.options, this.headers)
+      let url = window.urlBuilder(this.materials, 'v1/admin/material/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.materials = res.data.data
         this.loading = false
@@ -246,7 +246,7 @@ export default {
       this.$router.push('/material/get/' + entityID)
     },
     remove() {
-      window.axios.delete('admin/material/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/material/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

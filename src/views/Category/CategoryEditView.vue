@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/category/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/category/get/' + this.$route.params.id).then((res) => {
         this.category = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -86,7 +86,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/category/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/category/update/' + this.$route.params.id, {
         name: this.category.name,
         label: this.category.label,
         cover: this.category.cover,

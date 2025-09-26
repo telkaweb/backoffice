@@ -132,22 +132,22 @@ export default {
   },
   methods: {
     getBanks() {
-      window.axios.get('admin/bank/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/bank/index?per_page=1000').then((res) => {
         this.banks = res.data.data.data
       })
     },
     getCities() {
-      window.axios.get('admin/city/state/index/' + this.user.state_id).then((res) => {
+      window.axios.get('v1/admin/city/state/index/' + this.user.state_id).then((res) => {
         this.cities = res.data.data
       })
     },
     getStates() {
-      window.axios.get('admin/state/index?per_page=100').then((res) => {
+      window.axios.get('v1/admin/state/index?per_page=100').then((res) => {
         this.states = res.data.data.data
       })
     },
     getEntity() {
-      window.axios.get('admin/user/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/user/get/' + this.$route.params.id).then((res) => {
         this.user = res.data.data
         this.user.birth_date = this.user.birth_date_fa
         this.loading = false
@@ -156,7 +156,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/user/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/user/update/' + this.$route.params.id, {
         first_name: this.user.first_name,
         last_name: this.user.last_name,
         national_code: this.user.national_code,

@@ -184,7 +184,7 @@ export default {
       this.selectedItem = item
     },
     async update() {
-      window.axios.post('/admin/wallet/charge', {
+      window.axios.post('v1/admin/wallet/charge', {
         wallet_id: this.selectedItem.id,
         amount: this.amount
       }).then((res) => {
@@ -194,7 +194,7 @@ export default {
       })
     },
     getEntities() {
-      let url = 'admin/wallet/index'
+      let url = 'v1/admin/wallet/index'
       if (this.selectedUser) {
         url = url + '?user_id=' + this.selectedUser
       }

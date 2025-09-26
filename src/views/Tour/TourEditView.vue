@@ -121,7 +121,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/tour/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/tour/get/' + this.$route.params.id).then((res) => {
         this.tour = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -129,7 +129,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/tour/update/' + this.$route.params.id, this.tour).then((res) => {
+      window.axios.post('v1/admin/tour/update/' + this.$route.params.id, this.tour).then((res) => {
         this.openSnackbar(res.data.message, '#413b3b')
       }).catch((err) => {
         if (err.response.status === 422) {

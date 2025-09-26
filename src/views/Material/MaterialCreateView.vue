@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     getEntities(){
-      window.axios.get('admin/category/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/category/index?per_page=1000').then((res) => {
         this.categories = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -106,7 +106,7 @@ export default {
       })
     },
     create() {
-      window.axios.post('admin/material/create', {
+      window.axios.post('v1/admin/material/create', {
         name: this.material.name,
         label: this.material.label,
         unit: this.material.unit,

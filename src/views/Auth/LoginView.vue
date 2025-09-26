@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     async login() {
-      await window.axios.post('admin/auth/login', {
+      await window.axios.post('v1/admin/auth/login', {
         email: this.credentials.email,
         password: this.credentials.password
       }).then((res) => {
@@ -74,7 +74,7 @@ export default {
       })
     },
     async loginSeller() {
-      await window.axios.post('admin/seller/auth/login', {
+      await window.axios.post('v1/admin/seller/auth/login', {
         email: this.credentials.email,
         password: this.credentials.password
       }).then((res) => {

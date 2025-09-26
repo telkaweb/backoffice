@@ -59,12 +59,12 @@ export default {
   },
   methods: {
     getEntities() {
-      window.axios.get('admin/state/index?per_page=10000').then((res) => {
+      window.axios.get('v1/admin/state/index?per_page=10000').then((res) => {
         this.states = res.data.data.data
       })
     },
     create() {
-      window.axios.post('admin/city/create/', {
+      window.axios.post('v1/admin/city/create/', {
         name: this.city.name,
         label: this.city.label,
         is_active: this.city.is_active,

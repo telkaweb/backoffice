@@ -7,6 +7,12 @@ import CategoryIndexView from "@/views/Category/CategoryIndexView";
 import CategoryCreateView from "@/views/Category/CategoryCreateView";
 import CategoryEditView from "@/views/Category/CategoryEditView";
 
+import CharityIndexView from "@/views/Charity/CharityIndexView";
+import CharityCreateView from "@/views/Charity/CharityCreateView";
+import CharityEditView from "@/views/Charity/CharityEditView";
+import CharityDonationListView from "@/views/Charity/CharityDonationListView";
+import CharityDonationDetailsView from "@/views/Charity/CharityDonationDetailsView";
+
 import TagIndexView from "@/views/Tag/TagIndexView";
 import TagCreateView from "@/views/Tag/TagCreateView";
 import TagEditView from "@/views/Tag/TagEditView";
@@ -399,6 +405,32 @@ const routes = [
         component: CategoryEditView
     },
 
+    /*charity*/
+    {
+        path: '/charity/index',
+        name: 'CharityIndexView',
+        component: CharityIndexView
+    },
+    {
+        path: '/charity/create',
+        name: 'CharityCreateView',
+        component: CharityCreateView
+    },
+    {
+        path: '/charity/edit/:id',
+        name: 'CharityEditView',
+        component: CharityEditView
+    },
+    {
+        path: '/charity/:id/donations',
+        name: 'CharityDonationListView',
+        component: CharityDonationListView
+    },
+    {
+        path: '/charity/donations/:id/details',
+        name: 'CharityDonationDetailsView',
+        component: CharityDonationDetailsView
+    },
     /*order*/
     {
         path: '/order/index',

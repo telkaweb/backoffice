@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/ticket/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/ticket/get/' + this.$route.params.id).then((res) => {
         this.ticket = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -112,7 +112,7 @@ export default {
       })
     },
     answer() {
-      window.axios.post('admin/ticket/answer/' + this.$route.params.id, {
+      window.axios.post('v1/admin/ticket/answer/' + this.$route.params.id, {
         content: this.response.content
       }).then((res) => {
         this.getEntity()

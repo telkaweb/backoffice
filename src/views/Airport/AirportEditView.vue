@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/airport/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/airport/get/' + this.$route.params.id).then((res) => {
         this.airport = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -141,7 +141,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/airport/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/airport/update/' + this.$route.params.id, {
         en_name: this.airport.en_name,
         fa_name: this.airport.fa_name,
         city: this.airport.city,

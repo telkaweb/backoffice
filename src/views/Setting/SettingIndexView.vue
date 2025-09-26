@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     getEntities() {
-      window.axios.get('admin/setting/index').then((res) => {
+      window.axios.get('v1/admin/setting/index').then((res) => {
         this.variables = res.data.data
       })
     },
@@ -64,7 +64,7 @@ export default {
       this.variables.forEach((item) => {
         variables.push({id: item.id, value: item.value, value_2: item.value_2})
       })
-      window.axios.post('admin/setting/update', {
+      window.axios.post('v1/admin/setting/update', {
         variables: variables
       }).then((res) => {
         this.getEntities()

@@ -153,7 +153,7 @@ export default {
   },
   methods: {
     getEntities() {
-      let url = window.urlBuilder(this.rules, 'admin/rule/index', this.options, this.headers)
+      let url = window.urlBuilder(this.rules, 'v1/admin/rule/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.rules = res.data.data
         this.loading = false

@@ -317,7 +317,7 @@ export default {
       }
     },
     getMaterials() {
-      window.axios.get('admin/material/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/material/index?per_page=1000').then((res) => {
         this.materials = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -328,7 +328,7 @@ export default {
       })
     },
     getSellers() {
-      window.axios.get('admin/seller/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/seller/index?per_page=1000').then((res) => {
         this.sellers = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -339,7 +339,7 @@ export default {
       })
     },
     getCategories() {
-      window.axios.get('admin/category/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/category/index?per_page=1000').then((res) => {
         this.categories = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -350,7 +350,7 @@ export default {
       })
     },
     getTags() {
-      window.axios.get('admin/tag/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/tag/index?per_page=1000').then((res) => {
         this.tags = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -361,7 +361,7 @@ export default {
       })
     },
     getEntity() {
-      window.axios.get('admin/product/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/product/get/' + this.$route.params.id).then((res) => {
         this.product = res.data.data
         this.product.valid_until = this.product.valid_until_fa
         this.product.has_discount_until = this.product.has_discount_until_fa
@@ -392,7 +392,7 @@ export default {
       this.files.forEach((item) => {
         this.product.file_ids.push(item.file_id)
       })
-      window.axios.post('admin/product/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/product/update/' + this.$route.params.id, {
         name: this.product.name,
         slug: this.product.slug,
         label: this.product.label,

@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     create() {
-      window.axios.post('admin/tag/create/', {
+      window.axios.post('v1/admin/tag/create/', {
         name: this.tag.name,
         label: this.tag.label,
         cover: this.tag.cover,

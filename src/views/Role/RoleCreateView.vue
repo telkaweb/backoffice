@@ -58,13 +58,13 @@ export default {
   },
   methods: {
     getEntities() {
-      window.axios.get('admin/permission/index').then((res) => {
+      window.axios.get('v1/admin/permission/index').then((res) => {
         this.permissions = res.data.data
         this.loading = false
       })
     },
     create() {
-      window.axios.post('admin/role/create/', {
+      window.axios.post('v1/admin/role/create/', {
         name: this.role.name,
         label: this.role.label,
         permission_ids: this.role.permission_ids

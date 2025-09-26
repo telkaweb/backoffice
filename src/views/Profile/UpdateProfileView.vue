@@ -81,17 +81,17 @@ export default {
   },
   methods: {
     getCities() {
-      window.axios.get('admin/city/state/index/' + this.admin.state_id).then((res) => {
+      window.axios.get('v1/admin/city/state/index/' + this.admin.state_id).then((res) => {
         this.cities = res.data.data
       })
     },
     getStates() {
-      window.axios.get('admin/state/index?per_page=100').then((res) => {
+      window.axios.get('v1/admin/state/index?per_page=100').then((res) => {
         this.states = res.data.data.data
       })
     },
     getEntity() {
-      window.axios.get('admin/auth/profile/').then((res) => {
+      window.axios.get('v1/admin/auth/profile').then((res) => {
         this.admin = res.data.data
         this.loading = false
         this.getCities()
@@ -100,7 +100,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/auth/profile/update/', {
+      window.axios.post('v1/admin/auth/profile/update/', {
         name: this.admin.name,
         state_id: this.admin.state_id,
         city_id: this.admin.city_id,

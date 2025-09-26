@@ -191,7 +191,7 @@ export default {
   },
   methods: {
     async removeAllFinally() {
-      window.axios.post('/admin/survey/delete-multi', {
+      window.axios.post('v1/admin/survey/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -200,14 +200,14 @@ export default {
     },
 
     getEntities() {
-      let url = window.urlBuilder(this.surveys, 'admin/survey/index', this.options, this.headers)
+      let url = window.urlBuilder(this.surveys, 'v1/admin/survey/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.surveys = res.data.data
         this.loading = false
       })
     },
     remove() {
-      window.axios.delete('admin/survey/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/survey/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

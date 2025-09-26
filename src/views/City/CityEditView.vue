@@ -61,12 +61,12 @@ export default {
   },
   methods: {
     getEntities() {
-      window.axios.get('admin/state/index?per_page=10000').then((res) => {
+      window.axios.get('v1/admin/state/index?per_page=10000').then((res) => {
         this.states = res.data.data.data
       })
     },
     getEntity() {
-      window.axios.get('admin/city/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/city/get/' + this.$route.params.id).then((res) => {
         this.city = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -74,7 +74,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/city/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/city/update/' + this.$route.params.id, {
         name: this.city.name,
         label: this.city.label,
         is_active: this.city.is_active,

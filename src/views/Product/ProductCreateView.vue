@@ -291,7 +291,7 @@ export default {
       }
     },
     getMaterials() {
-      window.axios.get('admin/material/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/material/index?per_page=1000').then((res) => {
         this.materials = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -302,7 +302,7 @@ export default {
       })
     },
     getSellers() {
-      window.axios.get('admin/seller/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/seller/index?per_page=1000').then((res) => {
         this.sellers = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -313,7 +313,7 @@ export default {
       })
     },
     getCategories() {
-      window.axios.get('admin/category/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/category/index?per_page=1000').then((res) => {
         this.categories = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -324,7 +324,7 @@ export default {
       })
     },
     getTags() {
-      window.axios.get('admin/tag/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/tag/index?per_page=1000').then((res) => {
         this.tags = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -339,7 +339,7 @@ export default {
       this.files.forEach((item) => {
         this.product.file_ids.push(item.file_id)
       })
-      window.axios.post('admin/product/create', {
+      window.axios.post('v1/admin/product/create', {
         name: this.product.name,
         label: this.product.label,
         cover: this.product.cover,

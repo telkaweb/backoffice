@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     getEntities() {
-      let url = window.urlBuilder(this.details, 'detail/index', this.options, this.headers)
+      let url = window.urlBuilder(this.details, 'v1/detail/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.details = res.data.data
         this.loading = false

@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/rule/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/rule/get/' + this.$route.params.id).then((res) => {
         this.rule = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -55,7 +55,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/rule/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/rule/update/' + this.$route.params.id, {
         label: this.rule.label,
         content: this.rule.content
       }).then((res) => {

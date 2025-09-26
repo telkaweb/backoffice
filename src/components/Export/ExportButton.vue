@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     getExport() {
-      window.axios.get('admin/' + this.model + '/export').then((res) => {
+      window.axios.get('v1/admin/' + this.model + '/export').then((res) => {
         window.location.href = res.data.data
       })
     },

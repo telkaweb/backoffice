@@ -201,7 +201,7 @@ export default {
       this.vipService.fields.splice(index, 1);
     },
     getCategories() {
-      window.axios.get('admin/category/index?per_page=1000&type=vip_service').then((res) => {
+      window.axios.get('v1/admin/category/index?per_page=1000&type=vip_service').then((res) => {
         this.categories = res.data.data.data
       }).catch((err) => {
         if (err.response.status === 422) {
@@ -214,7 +214,7 @@ export default {
       })
     },
     getEntity() {
-      window.axios.get('admin/vip-service/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/vip-service/get/' + this.$route.params.id).then((res) => {
         this.vipService = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -222,7 +222,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/vip-service/update/' + this.$route.params.id,this.vipService).then((res) => {
+      window.axios.post('v1/admin/vip-service/update/' + this.$route.params.id,this.vipService).then((res) => {
         this.openSnackbar(res.data.message, '#413b3b')
       }).catch((err) => {
         if (err.response.status === 422) {

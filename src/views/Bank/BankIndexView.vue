@@ -229,7 +229,7 @@ export default {
   },
   methods: {
     async removeAllFinally() {
-      window.axios.post('/admin/bank/delete-multi', {
+      window.axios.post('v1/admin/bank/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -238,7 +238,7 @@ export default {
     },
 
     getEntities() {
-      let url = window.urlBuilder(this.bank, 'admin/bank/index', this.options, this.headers)
+      let url = window.urlBuilder(this.bank, 'v1/admin/bank/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.bank = res.data.data
         this.loading = false
@@ -251,7 +251,7 @@ export default {
       this.$router.push('/bank/edit/' + entityID)
     },
     remove() {
-      window.axios.delete('admin/bank/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/bank/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

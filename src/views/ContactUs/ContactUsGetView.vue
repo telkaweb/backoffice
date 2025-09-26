@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/contact-us/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/contact-us/get/' + this.$route.params.id).then((res) => {
         this.contactUs = res.data.data
         this.loading = false
       }).catch((err) => {

@@ -175,7 +175,7 @@ export default {
       return numericValue.toLocaleString();
     },
     getEntity() {
-      window.axios.get('admin/user/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/user/get/' + this.$route.params.id).then((res) => {
         this.user = res.data.data
         this.loading = false
       }).catch((err) => {
@@ -184,7 +184,7 @@ export default {
     },
     decreaseWallet() {
       this.decreaseWalletDialog = false
-      window.axios.post('admin/wallet/decrease/', {
+      window.axios.post('v1/admin/wallet/decrease/', {
         amount: this.value,
         user_id: this.$route.params.id,
         reason: this.reason
@@ -197,7 +197,7 @@ export default {
     },
     chargeWallet() {
       this.chargeWalletDialog = false
-      window.axios.post('admin/wallet/deposit/', {
+      window.axios.post('v1/admin/wallet/deposit/', {
         amount: this.value,
         user_id: this.$route.params.id,
         reason: this.reason

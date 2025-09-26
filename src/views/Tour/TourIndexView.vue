@@ -234,7 +234,7 @@ export default {
   },
   methods: {
     async removeAllFinally() {
-      window.axios.post('/admin/tour/delete-multi', {
+      window.axios.post('v1/admin/tour/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -243,7 +243,7 @@ export default {
     },
 
     getEntities() {
-      let url = window.urlBuilder(this.tours, 'admin/tour/index', this.options, this.headers)
+      let url = window.urlBuilder(this.tours, 'v1/admin/tour/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.tours = res.data.data
         this.loading = false
@@ -259,7 +259,7 @@ export default {
       this.$router.push('/tour/get/' + entityID)
     },
     remove() {
-      window.axios.delete('admin/tour/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/tour/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

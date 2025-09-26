@@ -57,13 +57,13 @@ export default {
   },
   methods: {
     getEntities() {
-      window.axios.get('admin/permission/index').then((res) => {
+      window.axios.get('v1/admin/permission/index').then((res) => {
         this.permissions = res.data.data
         this.loading = false
       })
     },
     getEntity() {
-      window.axios.get('admin/role/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/role/get/' + this.$route.params.id).then((res) => {
         this.role = res.data.data
         this.role.permission_ids = []
         this.role.permissions.forEach((item) => {
@@ -75,7 +75,7 @@ export default {
       })
     },
     edit() {
-      window.axios.post('admin/role/update/' + this.$route.params.id, {
+      window.axios.post('v1/admin/role/update/' + this.$route.params.id, {
         name: this.role.name,
         label: this.role.label,
         permission_ids: this.role.permission_ids,

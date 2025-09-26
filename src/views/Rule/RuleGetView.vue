@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('admin/rule/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/admin/rule/get/' + this.$route.params.id).then((res) => {
         this.rule = res.data.data
         this.loading = false
       }).catch((err) => {

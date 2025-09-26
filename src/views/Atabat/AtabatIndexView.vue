@@ -309,7 +309,7 @@ export default {
   },
   methods: {
     approveMultiRequest() {
-      window.axios.post('admin/atabat/approve', {
+      window.axios.post('v1/admin/atabat/approve', {
         amount: this.amountPerPerson,
         atabat_ids: this.selectedItemsForApprove
       }).then((res) => {
@@ -325,7 +325,7 @@ export default {
       })
     },
     async removeAllFinally() {
-      window.axios.post('/admin/atabat/delete-multi', {
+      window.axios.post('v1/admin/atabat/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -334,7 +334,7 @@ export default {
     },
 
     getEntities() {
-      let url = window.urlBuilder(this.atabats, 'admin/atabat/index', this.options, this.headers)
+      let url = window.urlBuilder(this.atabats, 'v1/admin/atabat/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.atabats = res.data.data
         this.loading = false
@@ -344,7 +344,7 @@ export default {
       this.$router.push('/atabat/create')
     },
     remove() {
-      window.axios.delete('admin/atabat/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/atabat/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

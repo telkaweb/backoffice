@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     getHomePageDetails() {
-      window.axios.get('admin/home-page').then((res) => {
+      window.axios.get('v1/admin/home-page').then((res) => {
         Object.values(res.data.data.value_of_wallets).forEach(item => {
           this.credits.datasets[0].data.push(parseInt(item.total));
         });

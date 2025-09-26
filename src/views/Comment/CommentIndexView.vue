@@ -244,7 +244,7 @@ export default {
   },
   methods: {
     async removeAllFinally() {
-      window.axios.post('/admin/comment/delete-multi', {
+      window.axios.post('v1/admin/comment/delete-multi', {
         ids: this.selectedItems
       }).then(() => {
         this.deleteAllDialog = false
@@ -252,7 +252,7 @@ export default {
       })
     },
     approve(item) {
-      window.axios.get('admin/comment/approve/' + item.id).then(() => {
+      window.axios.get('v1/admin/comment/approve/' + item.id).then(() => {
         let commentToApprove = this.comments.data.find(comment => comment.id === item.id);
         if (commentToApprove) {
           commentToApprove.status = "approved";
@@ -260,7 +260,7 @@ export default {
       })
     },
     getEntities() {
-      let url = window.urlBuilder(this.comments, 'admin/comment/index', this.options, this.headers)
+      let url = window.urlBuilder(this.comments, 'v1/admin/comment/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.comments = res.data.data
         this.loading = false
@@ -270,7 +270,7 @@ export default {
       this.$router.push('/comment/create')
     },
     remove() {
-      window.axios.delete('admin/comment/delete/' + this.selectedEntityID).then(() => {
+      window.axios.delete('v1/admin/comment/delete/' + this.selectedEntityID).then(() => {
         this.getEntities()
       })
       this.deleteEntityDialog = false

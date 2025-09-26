@@ -101,12 +101,12 @@ export default {
   },
   methods: {
     getStates() {
-      window.axios.get('admin/state/index?per_page=100').then((res) => {
+      window.axios.get('v1/admin/state/index?per_page=100').then((res) => {
         this.states = res.data.data.data
       })
     },
     getBanks() {
-      window.axios.get('admin/bank/index?per_page=1000').then((res) => {
+      window.axios.get('v1/admin/bank/index?per_page=1000').then((res) => {
         this.banks = res.data.data.data
       })
     },
@@ -123,7 +123,7 @@ export default {
       })
     },
     create() {
-      window.axios.post('admin/voucher/create/', this.voucher).then((res) => {
+      window.axios.post('v1/admin/voucher/create/', this.voucher).then((res) => {
         this.openSnackbar(res.data.message, '#413b3b')
       }).catch((err) => {
         if (err.response.status === 422) {

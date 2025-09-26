@@ -137,7 +137,7 @@ export default {
   },
   methods: {
     getWithdrawExport() {
-      window.axios.get('admin/withdraw/export').then((res) => {
+      window.axios.get('v1/admin/withdraw/export').then((res) => {
         window.location.href = res.data.data
       })
     },
@@ -146,7 +146,7 @@ export default {
       return numericValue.toLocaleString();
     },
     getEntities() {
-      let url = window.urlBuilder(this.transactions, 'admin/transaction/index', this.options, this.headers)
+      let url = window.urlBuilder(this.transactions, 'v1/admin/transaction/index', this.options, this.headers)
       window.axios.get(url).then((res) => {
         this.transactions = res.data.data
         this.loading = false

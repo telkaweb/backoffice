@@ -38,7 +38,7 @@ export default {
       this.fileDialog = true
     },
     logout() {
-      window.axios.get('admin/auth/logout').then(() => {
+      window.axios.get('v1/admin/auth/logout').then(() => {
         this.$cookies.remove('token')
         this.$router.go(0)
       })
@@ -47,7 +47,7 @@ export default {
       if (this.$store.state.user) {
         this.$store.state.user = null
       }
-      await window.axios.get('admin/auth/profile').then((res) => {
+      await window.axios.get('v1/admin/auth/profile').then((res) => {
         this.$store.state.user = res.data.data
         this.$store.state.auth = true
         this.isAuth = true
@@ -67,13 +67,37 @@ export default {
 </script>
 <style>
 @font-face {
-  font-family: YekanBakh;
-  src: url("../src/assets/fonts/yekan/YekanBakhFaNum-Regular.woff");
+  font-family: Dana;
+  src: url("../src/assets/fonts/dana/Dana-FaNum-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Dana;
+  src: url("../src/assets/fonts/dana/Dana-FaNum-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Dana;
+  src: url("../src/assets/fonts/dana/Dana-FaNum-DemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Dana;
+  src: url("../src/assets/fonts/dana/Dana-FaNum-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
 }
 
 * {
-  font-family: YekanBakh, serif;
+  font-family: Dana, sans-serif !important;
 }
+
 
 .main-background {
   background-size: cover;

@@ -96,7 +96,7 @@ export default {
 
 <style scoped>
 .thumb-container {
-  background-color: rgba(255, 0, 0, 0.7);
+  background-color: rgba(76, 175, 80, 0.7);
   height: 100vh !important;
 }
 

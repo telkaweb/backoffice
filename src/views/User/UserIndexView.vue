@@ -58,12 +58,33 @@
               :footer-props="{ itemsPerPageOptions: [5, 10, 25, 50] }"
               :loading="loading"
           >
+
+            <template v-slot:[`item.general_balance`]="{ item }">
+              {{ Number(item.general_balance).toLocaleString() }}
+            </template>
+
+            <template v-slot:[`item.health_balance`]="{ item }">
+              {{ Number(item.health_balance).toLocaleString() }}
+            </template>
+
+            <template v-slot:[`item.entertainment_balance`]="{ item }">
+              {{ Number(item.entertainment_balance).toLocaleString() }}
+            </template>
+
+            <template v-slot:[`item.tourism_balance`]="{ item }">
+              {{ Number(item.tourism_balance).toLocaleString() }}
+            </template>
+
+            <template v-slot:[`item.education_balance`]="{ item }">
+              {{ Number(item.education_balance).toLocaleString() }}
+            </template>
+
             <template
                 v-slot:[`item.status`]="{ item }">
-              <span v-if="item.status === 'active'" class="green--text">
+              <span v-if="item.status === 1" class="green--text">
                 فعال
               </span>
-              <span v-if="item.status === 'inactive'">
+              <span v-if="item.status === 0">
                 غیر فعال
               </span>
               <span v-if="item.status === 'banned'" class="red--text">
@@ -240,9 +261,9 @@ export default {
           sortable: true
         },
         {text: 'استان', value: 'state_name', original_value: 'state_id', align: 'center', width: '5%', show: true},
-        {text: 'شعبه', value: 'bank_label', original_value: 'bank_id', align: 'center', width: '5%', show: true},
+        {text: 'شعبه', value: 'bank_label', original_value: 'bank_id', align: 'center', width: '5%', show: false},
         {text: 'کد ملی', value: 'national_code', align: 'center', width: '5%', show: true},
-        {text: 'سطح', value: 'level', align: 'center', width: '10%', show: true},
+        {text: 'سطح', value: 'level', align: 'center', width: '10%', show: false},
         {text: 'وضعیت', value: 'status', align: 'center', width: '10%', show: true},
         {
           text: 'زمان ثبت نام',

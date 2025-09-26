@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     getEntity() {
-      window.axios.get('detail/get/' + this.$route.params.id).then((res) => {
+      window.axios.get('v1/detail/get/' + this.$route.params.id).then((res) => {
         this.detail = res.data.data
         this.loading = false
       }).catch((err) => {
